@@ -1,0 +1,93 @@
+.friends {
+    padding: 20px;
+}
+
+.friends__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.friends__sort-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.friends__sort-button:hover {
+    box-shadow: inset -5px -5px 8px #ffffff85, inset 5px 5px 8px #312f2b48;
+}
+
+.friends__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.friend__card {
+    padding: 15px;
+    border-radius: 10px;
+    background: #E7EBF0;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    transition: box-shadow 0.3s ease;
+    justify-content: space-between;
+}
+
+.friend__info {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    align-items: flex-start;
+}
+
+.friend__move-icon {
+    width: 25px;
+}
+
+.friend__profile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-weight: 700;
+}
+
+.friend__profile-pic {
+    border-radius: 100%;
+    width: 50px;
+    margin-right: 10px;
+    box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+}
+
+.friend__name {
+    font-weight: bold;
+}
+
+.friends__last-seen {
+    font-size: 1.4rem;
+    color: #858B96;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.friend__card.dragging {
+    opacity: 0.5;
+}
+
+.friend__card:hover {
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+}
+
+.friend__message {
+    width: 50px;
+    height: 50px;
+    background: #E7EBF0;
+    border: none;
+    border-radius: 30px;
+    box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+}
