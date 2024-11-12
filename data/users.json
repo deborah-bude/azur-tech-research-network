@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "firstName": "Alice",
+      "lastName": "Dupont",
+      "profilePicture": "alice.jpeg"
+    },
+    {
+      "id": 2,
+      "firstName": "Jean",
+      "lastName": "Pierre",
+      "profilePicture": "jean.jpeg"
+    },
+    {
+      "id": 3,
+      "firstName": "Marie",
+      "lastName": "Claire",
+      "profilePicture": "marie.jpeg"
+    },
+    {
+      "id": 4,
+      "firstName": "Bernard",
+      "lastName": "Martin",
+      "profilePicture": "bernard.jpeg"
+    }
+  ]
+  
