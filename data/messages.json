@@ -1,0 +1,40 @@
+[
+    {
+      "conversationId": 1,
+      "friendId": 1,
+      "messages": [
+        {
+          "senderId": 1,
+          "content": "Salut, comment ça va ?",
+          "timestamp": "2024-11-10T09:30:00Z"
+        },
+        {
+          "senderId": 0,
+          "content": "Ça va bien, merci ! Et toi ?",
+          "timestamp": "2024-11-10T09:32:00Z"
+        },
+        {
+          "senderId": 1,
+          "content": "Je vais super bien, merci !",
+          "timestamp": "2024-11-10T09:35:00Z"
+        }
+      ]
+    },
+    {
+      "conversationId": 2,
+      "friendId": 2,
+      "messages": [
+        {
+          "senderId": 2,
+          "content": "Hello ! As-tu vu mon dernier post ?",
+          "timestamp": "2024-11-10T10:45:00Z"
+        },
+        {
+          "senderId": 0,
+          "content": "Oui, il est super !",
+          "timestamp": "2024-11-10T10:46:00Z"
+        }
+      ]
+    }
+  ]
+  
