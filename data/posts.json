@@ -1,0 +1,69 @@
+[
+    {
+      "id": 1,
+      "authorId": 1,
+      "content": "Voici ma première publication ! #heureuse",
+      "image": "posts-20241112164717.jpg",
+      "reactions": {
+        "like": 12,
+        "dislike": 2,
+        "love": 8
+      },
+      "comments": [
+        {
+          "id": 1,
+          "authorId": 2,
+          "content": "Super publication !",
+          "timestamp": "2024-11-10T10:24:00Z"
+        },
+        {
+          "id": 2,
+          "authorId": 3,
+          "content": "Je suis d'accord, très belle photo !",
+          "timestamp": "2024-11-10T12:15:00Z"
+        }
+      ],
+      "timestamp": "2024-11-10T09:30:00Z"
+    },
+    {
+      "id": 2,
+      "authorId": 4,
+      "content": "Un magnifique coucher de soleil depuis la montagne.",
+      "image": "posts-20241112164750.jpg",
+      "reactions": {
+        "like": 23,
+        "dislike": 1,
+        "love": 15
+      },
+      "comments": [
+        {
+          "id": 3,
+          "authorId": 1,
+          "content": "Quelle vue !",
+          "timestamp": "2024-11-10T15:45:00Z"
+        }
+      ],
+      "timestamp": "2024-11-10T14:00:00Z"
+    },
+    {
+        "id": 2,
+        "authorId": 4,
+        "content": "Un magnifique coucher de soleil depuis la montagne.",
+        "image": "posts-20241112164843.jpg",
+        "reactions": {
+          "like": 23,
+          "dislike": 1,
+          "love": 15
+        },
+        "comments": [
+          {
+            "id": 3,
+            "authorId": 1,
+            "content": "Quelle vue !",
+            "timestamp": "2024-11-10T15:45:00Z"
+          }
+        ],
+        "timestamp": "2024-11-10T14:00:00Z"
+      }
+  ]
+  
