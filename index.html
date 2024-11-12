@@ -6,7 +6,6 @@
     <title>Fil d'actualité - Moments Partagés</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/feed.css">
-    <link rel="stylesheet" href="styles/neumorphism.css">
 </head>
 <body>
     <section class="layout-container">
@@ -33,92 +32,119 @@
             <section class="feed__section">
                 <article class="post">
                     <div class="post__header">
-                        <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__profile-pic">
-                        <div class="post__user-info">
-                            <p class="post__username">YorKun</p>
-                            <p class="post__date">Publié le 16/03/2022</p>
-                        </div>
+                        <a class="post__user-info" href="#">
+                            <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="post__profile-pic">
+                            <p class="post__username">Alice</p>
+                        </a>
+                        <p class="post__date">Publié le 16/03/2022</p>
                     </div>
                     <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                    <img src="assets/images/posts/building.jpg" alt="Post Image" class="post__image">
-                    <div class="post__reactions">
-                        <button class="post__reaction">❤️</button>
-                        <button class="post__reaction">👍</button>
-                        <button class="post__reaction">👎</button>
-                        <button class="post__reaction">📩</button>
-                    </div>
-                    <div class="post__comments-section">
-                        <h3 class="post__comments-title">Commentaires</h3>
-                        <div class="post__comment">
-                            <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__comment-pic">
-                            <div class="post__comment-content">
-                                <p class="post__comment-username">YorKun</p>
-                                <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                                <p class="post__comment-date">Publié le 16/03/2022</p>
-                                <button class="post__reply-button">Répondre</button>
+                    <img src="assets/images/posts/posts-20241112164750.jpg" alt="Post Image" class="post__image">
+                    <section class="post__footer">
+                        <div class="post__reactions">
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--share" src="./assets/icons/share.svg" alt="Partager">
+                            </button>
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--like" src="./assets/icons/like.svg" alt="Partager">
+                            </button>
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--dislike" src="./assets/icons/dislike.svg" alt="Partager">
+                            </button>
+                        </div>
+                        <div class="post__comments-section">
+                            <h3 class="post__comments-title">Commentaires</h3>
+                            <div class="post__comment">
+                                <a class="post__comment-user-info" href="#">
+                                    <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="post__comment-pic">
+                                    <p class="post__comment-username">Alice</p>
+                                </a>
+                                <div class="post__comment-content">
+                                    <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                                    <p class="post__comment-date">Publié le 16/03/2022</p>
+                                    <button class="button">Répondre</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </article>
 
                 <article class="post">
                     <div class="post__header">
-                        <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__profile-pic">
-                        <div class="post__user-info">
-                            <p class="post__username">YorKun</p>
-                            <p class="post__date">Publié le 16/03/2022</p>
-                        </div>
+                        <a class="post__user-info" href="#">
+                            <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="post__profile-pic">
+                            <p class="post__username">Alice</p>
+                        </a>
+                        <p class="post__date">Publié le 16/03/2022</p>
                     </div>
                     <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                    <img src="assets/images/posts/building.jpg" alt="Post Image" class="post__image">
-                    <div class="post__reactions">
-                        <button class="post__reaction">❤️</button>
-                        <button class="post__reaction">👍</button>
-                        <button class="post__reaction">👎</button>
-                        <button class="post__reaction">📩</button>
-                    </div>
-                    <div class="post__comments-section">
-                        <h3 class="post__comments-title">Commentaires</h3>
-                        <div class="post__comment">
-                            <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__comment-pic">
-                            <div class="post__comment-content">
-                                <p class="post__comment-username">YorKun</p>
-                                <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                                <p class="post__comment-date">Publié le 16/03/2022</p>
-                                <button class="post__reply-button">Répondre</button>
+                    <img src="assets/images/posts/posts-20241112164750.jpg" alt="Post Image" class="post__image">
+                    <section class="post__footer">
+                        <div class="post__reactions">
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--share" src="./assets/icons/share.svg" alt="Partager">
+                            </button>
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--like" src="./assets/icons/like.svg" alt="Partager">
+                            </button>
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--dislike" src="./assets/icons/dislike.svg" alt="Partager">
+                            </button>
+                        </div>
+                        <div class="post__comments-section">
+                            <h3 class="post__comments-title">Commentaires</h3>
+                            <div class="post__comment">
+                                <a class="post__comment-user-info" href="#">
+                                    <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="post__comment-pic">
+                                    <p class="post__comment-username">Alice</p>
+                                </a>
+                                <div class="post__comment-content">
+                                    <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                                    <p class="post__comment-date">Publié le 16/03/2022</p>
+                                    <button class="button">Répondre</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </article>
-                
+
                 <article class="post">
                     <div class="post__header">
-                        <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__profile-pic">
-                        <div class="post__user-info">
-                            <p class="post__username">YorKun</p>
-                            <p class="post__date">Publié le 16/03/2022</p>
-                        </div>
+                        <a class="post__user-info" href="#">
+                            <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="post__profile-pic">
+                            <p class="post__username">Alice</p>
+                        </a>
+                        <p class="post__date">Publié le 16/03/2022</p>
                     </div>
                     <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                    <img src="assets/images/posts/building.jpg" alt="Post Image" class="post__image">
-                    <div class="post__reactions">
-                        <button class="post__reaction">❤️</button>
-                        <button class="post__reaction">👍</button>
-                        <button class="post__reaction">👎</button>
-                        <button class="post__reaction">📩</button>
-                    </div>
-                    <div class="post__comments-section">
-                        <h3 class="post__comments-title">Commentaires</h3>
-                        <div class="post__comment">
-                            <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__comment-pic">
-                            <div class="post__comment-content">
-                                <p class="post__comment-username">YorKun</p>
-                                <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                                <p class="post__comment-date">Publié le 16/03/2022</p>
-                                <button class="post__reply-button">Répondre</button>
+                    <img src="assets/images/posts/posts-20241112164750.jpg" alt="Post Image" class="post__image">
+                    <section class="post__footer">
+                        <div class="post__reactions">
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--share" src="./assets/icons/share.svg" alt="Partager">
+                            </button>
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--like" src="./assets/icons/like.svg" alt="Partager">
+                            </button>
+                            <button class="post__reaction">
+                                <img class="post__icon post__icon--dislike" src="./assets/icons/dislike.svg" alt="Partager">
+                            </button>
+                        </div>
+                        <div class="post__comments-section">
+                            <h3 class="post__comments-title">Commentaires</h3>
+                            <div class="post__comment">
+                                <a class="post__comment-user-info" href="#">
+                                    <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="post__comment-pic">
+                                    <p class="post__comment-username">Alice</p>
+                                </a>
+                                <div class="post__comment-content">
+                                    <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                                    <p class="post__comment-date">Publié le 16/03/2022</p>
+                                    <button class="button">Répondre</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </article>
             </section>
         </main>
