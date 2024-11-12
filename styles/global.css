@@ -31,6 +31,8 @@ img {
 
 li, ul, ol {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 h1 {
@@ -54,6 +56,8 @@ h3 {
     font-weight: 700;
     border-radius: 20px;
     box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px #A6ABBD;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
 }
 
 /* 2 - Sidebar */
@@ -61,7 +65,8 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
+    min-height: calc(100vh - 150px);
     margin: 30px 0px 30px 30px;
 }
 
@@ -77,6 +82,7 @@ h3 {
     border-radius: 5rem;
     padding: 25px 15px;
     box-shadow: 8px 7px 21px #00000027, -6px -7px 11px #ffffff;
+    height: fit-content;
 }
 
 .sidebar__nav {
@@ -106,6 +112,7 @@ h3 {
     border-radius: 30px;
     box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
     margin-bottom: 15px;
+    height: 50px;
 }
 
 .sidebar__link--active > .sidebar__icon {
