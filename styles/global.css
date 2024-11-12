@@ -1,12 +1,12 @@
 /* 
-    1 - Global styles
-    2 - Sidebar Styles
+    1 - Normalize
+    2 - Sidebar
     3 - Toogle Switch
     4 - Main content
     5 - Footer
 */
 
-/* 1 - Global styles */
+/* 1 - Normalize */
 html {
     font-size: 62.5%;
 }
@@ -16,14 +16,17 @@ body {
     font-size: 1.8rem;
     background-color: #EBECF0;
     color: #414B5A;
+    margin: 0;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 img {
     width: 100%;
+    height: auto;
 }
 
 li, ul, ol {
@@ -42,12 +45,24 @@ h3 {
     font-size: 2.4rem;
 }
 
-/* 2 - Sidebar Styles */
+.button {
+    background: #FF8133;
+    border: #ffffff 1px solid;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 20px;
+    box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px #A6ABBD;
+}
+
+/* 2 - Sidebar */
 .layout-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
+    margin: 30px 0px 30px 30px;
 }
 
 .sidebar {
@@ -61,6 +76,7 @@ h3 {
     border: #ffffff 2px solid;
     border-radius: 5rem;
     padding: 25px 15px;
+    box-shadow: 8px 7px 21px #00000027, -6px -7px 11px #ffffff;
 }
 
 .sidebar__nav {
@@ -149,7 +165,8 @@ h3 {
  
 /* 4 - Main content */
 .content-area {
-    width: 75%;
+    width: 70%;
+    padding: 30px;
 }
 
 /* 5 - Footer */
