@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fil d'actualité - Moments Partagés</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/feed.css">
+    <link rel="stylesheet" href="styles/neumorphism.css">
+</head>
+<body>
+    <section class="layout-container">
+        <header class="sidebar">
+            <a class="sidebar__logo" href="index.html">
+                <img src="./assets/logo.svg" alt="Logo Moments Partagés">
+            </a>
+            <nav class="sidebar__nav">
+                <li class="sidebar__item"><a href="index.html" class="sidebar__link sidebar__link--active"><img class="sidebar__icon" src="./assets/icons/home.svg" alt="Icône accueil">Accueil</a></li>
+                <li class="sidebar__item"><a href="messaging.html" class="sidebar__link"><img class="sidebar__icon" src="./assets/icons/messages.svg" alt="Icône messages"> Messagerie</a></li>
+                <li class="sidebar__item"><a href="friends.html" class="sidebar__link"><img class="sidebar__icon" src="./assets/icons/friends.svg" alt="Icône amis"> Mes amis</a></li>
+            </nav>
+            <div class="sidebar__toggle">
+                <span class="sidebar__icon"><img src="assets/icons/night.svg" alt="Mode nuit"></span>
+                <div class="sidebar__toggle_switch">
+                    <input class="toggle-input" id="toggle" type="checkbox">
+                    <label class="toggle-label" for="toggle"></label>
+                </div>
+                <span class="sidebar__icon"><img src="assets/icons/sun.svg" alt="Mode jour"></span>
+            </div>
+        </header>
+
+        <main class="content-area" id="feed">
+            <section class="feed__section">
+                <article class="post">
+                    <div class="post__header">
+                        <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__profile-pic">
+                        <div class="post__user-info">
+                            <p class="post__username">YorKun</p>
+                            <p class="post__date">Publié le 16/03/2022</p>
+                        </div>
+                    </div>
+                    <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                    <img src="assets/images/posts/building.jpg" alt="Post Image" class="post__image">
+                    <div class="post__reactions">
+                        <button class="post__reaction">❤️</button>
+                        <button class="post__reaction">👍</button>
+                        <button class="post__reaction">👎</button>
+                        <button class="post__reaction">📩</button>
+                    </div>
+                    <div class="post__comments-section">
+                        <h3 class="post__comments-title">Commentaires</h3>
+                        <div class="post__comment">
+                            <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__comment-pic">
+                            <div class="post__comment-content">
+                                <p class="post__comment-username">YorKun</p>
+                                <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                                <p class="post__comment-date">Publié le 16/03/2022</p>
+                                <button class="post__reply-button">Répondre</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post__header">
+                        <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__profile-pic">
+                        <div class="post__user-info">
+                            <p class="post__username">YorKun</p>
+                            <p class="post__date">Publié le 16/03/2022</p>
+                        </div>
+                    </div>
+                    <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                    <img src="assets/images/posts/building.jpg" alt="Post Image" class="post__image">
+                    <div class="post__reactions">
+                        <button class="post__reaction">❤️</button>
+                        <button class="post__reaction">👍</button>
+                        <button class="post__reaction">👎</button>
+                        <button class="post__reaction">📩</button>
+                    </div>
+                    <div class="post__comments-section">
+                        <h3 class="post__comments-title">Commentaires</h3>
+                        <div class="post__comment">
+                            <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__comment-pic">
+                            <div class="post__comment-content">
+                                <p class="post__comment-username">YorKun</p>
+                                <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                                <p class="post__comment-date">Publié le 16/03/2022</p>
+                                <button class="post__reply-button">Répondre</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="post">
+                    <div class="post__header">
+                        <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__profile-pic">
+                        <div class="post__user-info">
+                            <p class="post__username">YorKun</p>
+                            <p class="post__date">Publié le 16/03/2022</p>
+                        </div>
+                    </div>
+                    <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                    <img src="assets/images/posts/building.jpg" alt="Post Image" class="post__image">
+                    <div class="post__reactions">
+                        <button class="post__reaction">❤️</button>
+                        <button class="post__reaction">👍</button>
+                        <button class="post__reaction">👎</button>
+                        <button class="post__reaction">📩</button>
+                    </div>
+                    <div class="post__comments-section">
+                        <h3 class="post__comments-title">Commentaires</h3>
+                        <div class="post__comment">
+                            <img src="assets/images/profiles/user1.jpg" alt="Profil de YorKun" class="post__comment-pic">
+                            <div class="post__comment-content">
+                                <p class="post__comment-username">YorKun</p>
+                                <p class="post__comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
+                                <p class="post__comment-date">Publié le 16/03/2022</p>
+                                <button class="post__reply-button">Répondre</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">© 2024 Moments Partagés - Tous droits réservés</p>
+    </footer>
+
+    <script src="js/feed.js"></script>
+</body>
+</html>
