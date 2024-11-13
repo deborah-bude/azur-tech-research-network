@@ -1,20 +1,23 @@
 import { getPostsData, getUsersData } from "./dataLoader.js";
 import { formatDate } from "./utils.js";
 
-const feedSection = document.getElementById("feed")
-const postsData = await getPostsData()
-const usersData = await getUsersData()
+const feedSection = document.getElementById("feed");
+const popupSection = document.getElementById("popup");
+const popupImage = document.querySelector('.popup__image');
+const popupClose = document.querySelector('.popup__close');
+const postsData = await getPostsData();
+const usersData = await getUsersData();
 let allPosts = [];
 
 //Post generate
 function postTemplate(post) {
-    const {authorId, content, image, reactions, comments, timestamp} = post
-    const author = usersData.find((user) => user.id === authorId)
-    const datePost = formatDate(timestamp)
+    const {authorId, content, image, reactions, comments, timestamp} = post;
+    const author = usersData.find((user) => user.id === authorId);
+    const datePost = formatDate(timestamp);
 
     const allComments = comments.map((comment) => {
-        const commentDate = formatDate(comment.timestamp)
-        const commentAuthor = usersData.find((user) => user.id === comment.authorId)
+        const commentDate = formatDate(comment.timestamp);
+        const commentAuthor = usersData.find((user) => user.id === comment.authorId);
 
         return(
         `<div class="post__comment">
@@ -28,7 +31,7 @@ function postTemplate(post) {
                 <button class="button">Répondre</button>
             </div>
         </div>`)
-    }) 
+    });
 
     const newPost = 
     `<article class="post">
@@ -39,8 +42,8 @@ function postTemplate(post) {
             </a>
             <p class="post__date">Publié le ${datePost}</p>
         </div>
-        <p class="post__content">${content}</p>
-        <img src="assets/images/posts/${image}" alt="Post Image" class="post__image">
+        ${content ? `<p class="post__content">${content}</p>` : ""}
+        ${image ? `<img src="assets/images/posts/${image}" alt="Image de ${image} posté par ${author.firstName} ${author.lastName}" class="post__image">` : ""}
         <section class="post__footer">
             <div class="post__reactions">
                 <button class="post__reaction">
@@ -72,9 +75,9 @@ function postTemplate(post) {
                 ${allComments.join("")}
             </div>
         </section>
-    </article>`
+    </article>`;
 
-    allPosts.push(newPost)
+    allPosts.push(newPost);
 }
 
 postsData.map((post) => postTemplate(post))
@@ -100,10 +103,25 @@ function particuleAnimation(event) {
             particle.remove();
         });
     }
-    
-    console.log(btn.querySelector(".particles"))
 }
 
 document.querySelectorAll(".post__reaction").forEach((reactionButton) => {
     reactionButton.addEventListener("click", particuleAnimation);
+});
+
+function popupImgOpen(event) {
+    popup.classList.add('active');
+    popupImage.src = event.currentTarget.src;
+}
+
+//Show image in full screen
+document.querySelectorAll(".post__image").forEach((image) => {
+    image.addEventListener("click", popupImgOpen);
+});
+
+popup.addEventListener('click', (event) => {
+    if (event.target === popupSection || event.target === popupClose) {
+      popup.classList.remove('active');
+      popupImage.src = "";
+    }
 });
