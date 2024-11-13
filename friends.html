@@ -32,10 +32,13 @@
             <section class="friends">
                 <div class="friends__header">
                     <h1 class="friends__title">Mes Amis</h1>
-                    <div class="friends__sort-buttons">
-                        <button class="button">Aucun tri</button>
-                        <button class="button">Trier par Prénom</button>
-                        <button class="button">Trier par Nom</button>
+                    <div class="friends__sort-dropdown">
+                        <label for="sort-options" class="sort-label">Trier par :</label>
+                        <select id="sort-options" class="sort-select">
+                            <option value="none" selected>Aucun tri</option>
+                            <option value="firstName">Prénom</option>
+                            <option value="lastName">Nom</option>
+                        </select>
                     </div>
                 </div>
                 <ul class="friends__list">
@@ -48,40 +51,40 @@
                             </div>
                             <span class="friends__last-seen">Dernière connexion : il y a 2 jours</span>
                         </div>
-                        <button class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></button>
+                        <a href="./messaging.html?id=1" class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></a>
                     </li>
                     <li class="friend__card">
                         <img class="friend__move-icon" src="./assets/icons/drag-drop.svg" alt="Déplacer">
                         <div class="friend__info">
                             <div class="friend__profile">
-                                <img src="assets/images/profiles/jean.jpeg" alt="Profil de Bob" class="friend__profile-pic">
-                                <p class="friend__profile-name">Bob Martin</p>
+                                <img src="assets/images/profiles/jean.jpeg" alt="Profil de Jean" class="friend__profile-pic">
+                                <p class="friend__profile-name">Jean Pierre</p>
                             </div>
                             <span class="friends__last-seen">Dernière connexion : aujourd'hui</span>
                         </div>
-                        <button class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></button>
+                        <a href="./messaging.html?id=2" class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></a>
                     </li>
                     <li class="friend__card">
                         <img class="friend__move-icon" src="./assets/icons/drag-drop.svg" alt="Déplacer">
                         <div class="friend__info">
                             <div class="friend__profile">
-                                <img src="assets/images/profiles/marie.jpeg" alt="Profil de Chloé" class="friend__profile-pic">
-                                <p class="friend__profile-name">Chloé Petit</p>
+                                <img src="assets/images/profiles/marie.jpeg" alt="Profil de Marie" class="friend__profile-pic">
+                                <p class="friend__profile-name">Marie Claire</p>
                             </div>
                             <span class="friends__last-seen">Dernière connexion : il y a 5 heures</span>
                         </div>
-                        <button class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></button>
+                        <a href="./messaging.html?id=3" class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></a>
                     </li>
                     <li class="friend__card">
                         <img class="friend__move-icon" src="./assets/icons/drag-drop.svg" alt="Déplacer">
                         <div class="friend__info">
                             <div class="friend__profile">
-                                <img src="assets/images/profiles/bernard.jpeg" alt="Profil de David" class="friend__profile-pic">
-                                <p class="friend__profile-name">David Moreau</p>
+                                <img src="assets/images/profiles/bernard.jpeg" alt="Profil de Bernard" class="friend__profile-pic">
+                                <p class="friend__profile-name">Bernard Martin</p>
                             </div>
                             <span class="friends__last-seen">Dernière connexion : il y a 3 jours</span>
                         </div>
-                        <button class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></button>
+                        <a href="./messaging.html?id=4" class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></a>
                     </li>
                 </ul>
             </section>            
@@ -92,6 +95,6 @@
         <p class="footer__text">© 2024 Moments Partagés - Tous droits réservés</p>
     </footer>
 
-    <script src="js/feed.js"></script>
+    <script type="module" src="script/friends.js"></script>
 </body>
 </html>

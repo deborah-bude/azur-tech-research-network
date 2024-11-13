@@ -1,27 +1,35 @@
 [
     {
       "id": 1,
-      "firstName": "Alice",
+      "firstName": "Marie",
       "lastName": "Dupont",
-      "profilePicture": "alice.jpeg"
+      "profilePicture": "alice.jpeg",
+      "lastConnexion": "2024-11-10T10:24:00Z",
+      "conversationId": "1"
     },
     {
       "id": 2,
       "firstName": "Jean",
       "lastName": "Pierre",
-      "profilePicture": "jean.jpeg"
+      "profilePicture": "jean.jpeg",
+      "lastConnexion": "2024-11-10T10:24:00Z",
+      "conversationId": "4"
     },
     {
       "id": 3,
-      "firstName": "Marie",
+      "firstName": "Alice",
       "lastName": "Claire",
-      "profilePicture": "marie.jpeg"
+      "profilePicture": "marie.jpeg",
+      "lastConnexion": "2024-11-10T10:24:00Z",
+      "conversationId": "3"
     },
     {
       "id": 4,
       "firstName": "Bernard",
       "lastName": "Martin",
-      "profilePicture": "bernard.jpeg"
+      "profilePicture": "bernard.jpeg",
+      "lastConnexion": "2024-11-10T10:24:00Z",
+      "conversationId": "2"
     }
   ]
   

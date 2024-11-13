@@ -1,3 +1,9 @@
+/*
+    1- List of friends
+    2- Filters
+*/
+
+/* 1-List of friends */
 .friends {
     padding: 20px;
 }
@@ -7,15 +13,6 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.friends__sort-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.friends__sort-button:hover {
-    box-shadow: inset -5px -5px 8px #ffffff85, inset 5px 5px 8px #312f2b48;
 }
 
 .friends__list {
@@ -90,4 +87,17 @@
     border: none;
     border-radius: 30px;
     box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+}
+
+/* 2- Filters */
+.sort-select {
+    position: relative;
+    width: 200px;
+    background-color: #E0E5EC;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 10px #b8b9be, -5px -5px 10px #ffffff;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
 }
