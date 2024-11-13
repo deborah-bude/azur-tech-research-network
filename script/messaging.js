@@ -1,11 +1,13 @@
 import { formatDate } from "./utils.js";
 import { getMessagesData, getUsersData, sendMessagesData } from "./dataLoader.js";
 
+const messageSidebarSection = document.getElementById("messageSidebar");
+const conversationHeader = document.querySelector("#conversation .conversation__profile");
+const conversationSection = document.querySelector("#conversation .conversation__messages");
+const formMessage = document.querySelector(".form-message")
+
 class ConversationManager {
   constructor() {
-    this.messageSidebarSection = document.getElementById("messageSidebar");
-    this.conversationHeader = document.querySelector("#conversation .conversation__profile");
-    this.conversationSection = document.querySelector("#conversation .conversation__messages");
     this.messagesData = [];
     this.usersData = [];
     this.allConversations = [];
@@ -20,7 +22,7 @@ class ConversationManager {
 
   generateSidebar() {
     this.messagesData.forEach((message) => this.sidebarTemplate(message));
-    this.messageSidebarSection.innerHTML = this.allConversations.join("");
+    messageSidebarSection.innerHTML = this.allConversations.join("");
   }
 
   sidebarTemplate(message) {
@@ -49,18 +51,19 @@ class ConversationManager {
 
     if (conversations === undefined) {
       conversations = this.messagesData[0];
+      conversationId = this.messagesData[0].conversationId;
     }
     
     this.friendUser = this.usersData.find((user) => user.id === conversations.friendId);
 
-    this.conversationHeader.innerHTML = 
+    conversationHeader.innerHTML = 
     `<div class="conversation__profile">
         <img src="assets/images/profiles/${this.friendUser.profilePicture}" alt="Profil de ${this.friendUser.firstName} ${this.friendUser.lastName}" class="conversation__profile-pic">
         <p class="conversation__name">${this.friendUser.firstName} ${this.friendUser.lastName}</p>
     </div>`;
 
     conversations.messages.forEach((message) => this.messageTemplate(message));
-    this.conversationSection.innerHTML = this.messagesConversation.join("");
+    conversationSection.innerHTML = this.messagesConversation.join("");
   }
 
   messageTemplate(message) {
@@ -78,17 +81,17 @@ class ConversationManager {
   }
 
   async sendMessagesData(conversationId, content) {
+    console.log(content)
     const timestamp = new Date();
-    console.log(timestamp)
     const newMessage = await sendMessagesData(conversationId, this.friendUser.id, content, timestamp);
-    this.messageTemplate(newMessage);
-    this.conversationSection.innerHTML = this.messagesConversation.join("");
+    // this.messageTemplate(newMessage);
+    // this.conversationSection.innerHTML = this.messagesConversation.join("");
   }
 }
 
 // Usage
 const searchParams = new URLSearchParams(window.location.search);
-const conversationId = searchParams.get("id");
+let conversationId = searchParams.get("id");
 
 const conversationManager = new ConversationManager();
 await conversationManager.loadData();
@@ -97,4 +100,13 @@ conversationManager.generateSidebar();
 await conversationManager.generateConversation(conversationId);
 
 // Send a new message
-conversationManager.sendMessagesData(conversationId, "Hello, world!");
+formMessage.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const messageContent = document.getElementById("messageContent");
+
+  if(!messageContent.value) {
+    return;
+  }
+
+  conversationManager.sendMessagesData(conversationId, messageContent.value);
+})

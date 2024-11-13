@@ -164,7 +164,7 @@
 }
 
 /* 3- Message input */
-.message-input {
+.form-message {
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -175,7 +175,7 @@
     box-shadow: inset -4px -4px 4px #ffffff, inset 5px 5px 2px #00000012;
 }
 
-.message-input__field {
+.form-message__field {
     border: none;
     padding: 10px;
     border-radius: 20px;
@@ -184,7 +184,7 @@
     width: 75%;
 }
 
-.message-input__send, .message-input__file {
+.form-message__send, .form-message__file {
     width: 40px;
     height: 40px;
     background: #E7EBF0;

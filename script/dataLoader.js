@@ -43,8 +43,10 @@ export async function getMessagesData() {
     }
 }
 
-export async function sendMessagesData(conversationId, senderId, content, timestamp) {
+export async function sendMessagesData(conversationId, friendId, content, timestamp) {
     const url = "../data/messages.json";
+    console.log(conversationId, friendId, content, timestamp)
+
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -52,10 +54,15 @@ export async function sendMessagesData(conversationId, senderId, content, timest
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          conversationId: "1",
-          senderId: 'value1',
-          content: "Test d'envoie de message",
-          timestamp: "2024-11-10T09:32:00Z",
+          "conversationId": conversationId,
+          "friendId": friendId,
+          "messages": [ 
+            {
+              "senderId": 0, 
+              "content": content, 
+              "timestamp": timestamp
+            }
+          ],
         })
       });
       if (!response.ok) {
