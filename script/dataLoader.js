@@ -44,7 +44,7 @@ export async function getMessagesData() {
 }
 
 export async function sendMessagesData(conversationId, friendId, content, timestamp) {
-    const url = "../data/messages.json";
+    const url = "https://azur-tech-research-network.vercel.app/data/messages.json";
     console.log(conversationId, friendId, content, timestamp)
 
     try {
