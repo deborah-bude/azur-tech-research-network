@@ -6,8 +6,7 @@
       "image": "posts-20241112164717.jpg",
       "reactions": {
         "like": 12,
-        "dislike": 2,
-        "love": 8
+        "dislike": 2
       },
       "comments": [
         {
@@ -27,13 +26,12 @@
     },
     {
       "id": 2,
-      "authorId": 4,
+      "authorId": 3,
       "content": "Un magnifique coucher de soleil depuis la montagne.",
       "image": "posts-20241112164750.jpg",
       "reactions": {
         "like": 23,
-        "dislike": 1,
-        "love": 15
+        "dislike": 1
       },
       "comments": [
         {
@@ -47,19 +45,18 @@
     },
     {
         "id": 2,
-        "authorId": 4,
-        "content": "Un magnifique coucher de soleil depuis la montagne.",
+        "authorId": 3,
+        "content": "Un bon moment passé entre amies.",
         "image": "posts-20241112164843.jpg",
         "reactions": {
           "like": 23,
-          "dislike": 1,
-          "love": 15
+          "dislike": 1
         },
         "comments": [
           {
             "id": 3,
-            "authorId": 1,
-            "content": "Quelle vue !",
+            "authorId": 4,
+            "content": "Super !",
             "timestamp": "2024-11-10T15:45:00Z"
           }
         ],
