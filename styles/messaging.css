@@ -5,13 +5,16 @@
 */
 .content-area {
     display: flex;
-    padding-right: 0px;
+    padding: 0;
     justify-content: space-between;
 }
 
 /* 1- Messaging sidebar */
 .messaging__sidebar {
     width: 30%;
+    overflow-y: auto;
+    max-height: 75vh;
+    padding-right: 10px;
 }
 
 .search-bar__input {
@@ -43,17 +46,17 @@
 }
 
 .contact {
-    display: flex;
-    align-items: center;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     transition: 0.3s;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
-.contact:hover {
+.contact a {
+    width: 100%;
+}
+
+.contact:hover, .contact.active {
     box-shadow: inset -10px -10px 20px #FAFBFF, inset 10px 10px 20px #A6ABBD;
     background-color: #fff;
 }
@@ -65,7 +68,7 @@
     margin-right: 10px;
 }
 
-.contact__info {
+.contact__info, .conversation__profile {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -89,15 +92,15 @@
 /* 2- Conversation section */
 .messaging__conversation {
     padding: 20px;
-    margin-left: 20px;
     background-color: #ffffff;
     border-radius: 30px 0 0 30px;
     display: flex;
     box-shadow: inset -10px -10px 20px #FAFBFF, inset 10px 10px 20px #A6ABBD;
-    flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
     width: 60%;
+    flex-direction: column;
+    max-height: 70vh;
 }
 
 .conversation__header {
@@ -126,11 +129,17 @@
     overflow-y: auto;
     margin-top: 20px;
     padding: 0 10px;
+    height: 75%;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
+    /* align-items: flex-start; */
 }
 
 .message {
     padding: 10px 15px;
-    border-radius: 30px;
+    border-radius: 30px ;
     margin-bottom: 30px;
     background: #E7EBF0;
     font-size: 1.6rem;

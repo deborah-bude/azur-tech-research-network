@@ -30,45 +30,21 @@
 
         <main class="content-area" id="messages">
             <section class="messaging__sidebar">
+                <h1>Conversations</h1>
                 <div class="search-bar">
                     <input type="text" placeholder="Rechercher" class="search-bar__input">
                 </div>
-                <ul class="messaging__contacts-list">
-                    <li class="contact">
-                        <div class="contact__info">
-                            <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="contact__profile-pic">
-                            <p class="contact__name">Alice</p>
-                        </div>
-                        <p class="contact__date">16/03/2022</p>
-                        <p class="contact__message-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                    </li>
-                    
-                    <li class="contact">
-                        <div class="contact__info">
-                            <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="contact__profile-pic">
-                            <p class="contact__name">Alice</p>
-                        </div>
-                        <p class="contact__date">16/03/2022</p>
-                        <p class="contact__message-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                    </li>
-                </ul>
+                <ul id="messageSidebar" class="messaging__contacts-list"></ul>
             </section>
 
-            <section class="messaging__conversation">
+            <section id="conversation" class="messaging__conversation">
                 <div class="conversation__header">
-                    <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="conversation__profile-pic">
-                    <p class="conversation__name">Alice</p>
-                </div>
-                <div class="conversation__messages">
-                    <div class="message message--received">
-                        <p class="message__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                        <p class="message__date">16/03/2022 à 16h31</p>
-                    </div>
-                    <div class="message message--sent">
-                        <p class="message__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames scelerisque sapien.</p>
-                        <p class="message__date">16/03/2022 à 16h31</p>
+                    <div class="conversation__profile">
+                        <img src="assets/images/profiles/alice.jpeg" alt="Profil de Alice" class="conversation__profile-pic">
+                        <p class="conversation__name">Alice</p>
                     </div>
                 </div>
+                <div class="conversation__messages"></div>
                 <div class="message-input">
                     <button class="message-input__file"><img src="assets/icons/link.svg" alt="Envoyer"></button>
                     <input type="text" placeholder="Écrivez votre message" class="message-input__field">
@@ -82,6 +58,6 @@
         <p class="footer__text">© 2024 Moments Partagés - Tous droits réservés</p>
     </footer>
 
-    <script src="js/feed.js"></script>
+    <script type="module" src="script/messaging.js"></script>
 </body>
 </html>
