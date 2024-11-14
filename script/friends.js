@@ -1,57 +1,73 @@
 import { getUsersData } from "./dataLoader.js";
 import { formatDate } from "./utils.js";
+
 const friendList = document.querySelector(".friends__list");
-const sortFilterOption = document.getElementById('sort-options')
+const sortFilterOption = document.getElementById('sort-options');
 
 const allFriends = await getUsersData();
 
-/* Drag and Drop */
+/**
+ * Initialize drag-and-drop functionality for friend cards
+ */
 function initDrapAndDrop() {
     const friendCard = document.querySelectorAll(".friend__card");
     let draggedItem;
     let dragStartClientY;
 
-
     /** @type {HTMLAnchorElement[]} */
     friendCard.forEach(card => {
-        card.addEventListener("dragstart", (event)=> {
+        // Start drag-and-drop
+        card.addEventListener("dragstart", (event) => {
             draggedItem = card;
-            event.dataTransfer.effectAllowed = "move"
+            event.dataTransfer.effectAllowed = "move";
             event.target.classList.add("dragging");
             dragStartClientY = event.clientY;
-        })
+        });
 
-        card.addEventListener("dragend", ()=> {
+        // End drag-and-drop
+        card.addEventListener("dragend", () => {
             draggedItem = null;
             event.target.classList.remove("dragging");
-        })
+        });
 
+        // Management hover to place the card
         card.addEventListener("dragover", (event) => {
             event.preventDefault();
             const box = card.getBoundingClientRect();
             const offsetY = event.clientY - box.top - box.height / 2;
-            
+
             if (card !== draggedItem) {
+                // Card before or after the card hover
                 if (offsetY < 0) {
                     card.parentNode.insertBefore(draggedItem, card);
                 } else {
                     card.parentNode.insertBefore(draggedItem, card.nextSibling);
                 }
             }
-        })
+        });
     });
 }
 
-initDrapAndDrop(); 
+// Calls drag-and-drop initialization function
+initDrapAndDrop();
 
-/* Filter friend by firstName or lastName */
-function sortFriendsBy(property) {
-    if(property === "none") {
+/**
+ * Sorts friends by specified property (first or lastName)
+ * @param {"firstName" | "lastName" | "none"}  [property="none"] - Property to sort (“firstName”, “lastName”, “none”)
+ * @returns {Array} - Sorted table of friends or complete list if no sorting is selected
+ */
+function sortFriendsBy(property = "none") {
+    if (property === "none") {
         return [...allFriends];
-    };
-
+    }
+    
     return [...allFriends].sort(sortBy(property));
 
+    /**
+     * Comparaison function for sorting by property
+     * @param {string} property - Sort property
+     * @returns {function} - Comparaison function for Array.prototype.sort
+     */
     function sortBy(property) {
         return function (person1, person2) {
             if (person1[property] > person2[property]) {
@@ -63,26 +79,32 @@ function sortFriendsBy(property) {
             return 0;
         };
     }
-};
+}
 
+/**
+ * Generates HTML template to display sorted friends list
+ * @param {Array} sortedFriends - Sorted list of friends
+ * @returns {string} - HTML friends list
+ */
 function friendListTemplate(sortedFriends) {
     return sortedFriends.map((friend) => 
         `<li class="friend__card" draggable="true">
             <img class="friend__move-icon" src="./assets/icons/drag-drop.svg" alt="Déplacer">
             <div class="friend__info">
                 <div class="friend__profile">
-                    <img src="assets/images/profiles/${friend.profilePicture}" alt="Profil de Alice" class="friend__profile-pic">
+                    <img src="assets/images/profiles/${friend.profilePicture}" alt="Profil de ${friend.firstName}" class="friend__profile-pic">
                     <p class="friend__profile-name">${friend.firstName} ${friend.lastName}</p>
                 </div>
                 <span class="friends__last-seen">Dernière connexion : il y a ${formatDate(friend.lastConnexion)}</span>
             </div>
             <a href="./messaging.html?id=${friend.conversationId}" class="friend__message"><img src="assets/icons/send.svg" alt="Envoyer un message"></a>
         </li>`
-    ).join(''); // Joindre les éléments sans espace entre eux
+    ).join('');
 }
 
+// Listen to changes to sort friends
 sortFilterOption.addEventListener('change', (event) => {
     const sortedFriends = sortFriendsBy(event.target.value);
     friendList.innerHTML = friendListTemplate(sortedFriends);
-    initDrapAndDrop(); 
+    initDrapAndDrop(); // Resets drag-and-drop for new sorted items
 });
