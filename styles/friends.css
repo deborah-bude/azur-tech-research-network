@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     cursor: grab;
-    transition: box-shadow 0.3s ease;
+    transition: 0.3s;
     justify-content: space-between;
 }
 
@@ -74,6 +74,7 @@
 
 .friend__card.dragging {
     opacity: 0.5;
+    cursor: grabbing;
 }
 
 .friend__card:hover {
@@ -83,6 +84,7 @@
 .friend__message {
     width: 50px;
     height: 50px;
+    display: inline-block;
     background: #E7EBF0;
     border: none;
     border-radius: 30px;
@@ -100,4 +102,9 @@
     box-shadow: 5px 5px 10px #b8b9be, -5px -5px 10px #ffffff;
     cursor: pointer;
     font-family: Arial, sans-serif;
+}
+
+/* 3- Drag and drop */
+.drag-border {
+    border: black 2px solid;
 }
