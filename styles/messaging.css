@@ -2,19 +2,19 @@
     1- Message sidebar
     2- Conversation section
     3- Message input
+    4- Responsive for computers
 */
 .content-area {
     display: flex;
     padding: 0;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* 1- Messaging sidebar */
 .messaging__sidebar {
-    width: 30%;
-    overflow-y: auto;
-    max-height: 75vh;
-    padding-right: 10px;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 .search-bar__input {
@@ -92,15 +92,15 @@
 /* 2- Conversation section */
 .messaging__conversation {
     padding: 20px;
-    background-color: #ffffff;
-    border-radius: 30px 0 0 30px;
+    border-radius: 20px;
     display: flex;
     box-shadow: inset -10px -10px 20px #FAFBFF, inset 10px 10px 20px #A6ABBD;
     justify-content: space-between;
     align-items: stretch;
-    width: 60%;
+    width: 100%;
     flex-direction: column;
     max-height: 70vh;
+    margin-bottom: 50px;
 }
 
 .conversation__header {
@@ -130,21 +130,15 @@
     margin-top: 20px;
     padding: 0 10px;
     height: 75%;
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* flex-direction: column; */
-    /* justify-content: flex-end; */
-    /* align-items: flex-start; */
 }
 
 .message {
     padding: 10px 15px;
-    border-radius: 30px ;
+    border-radius: 30px;
     margin-bottom: 30px;
     background: #E7EBF0;
-    font-size: 1.6rem;
     max-width: 70%;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .message--received {
@@ -191,4 +185,21 @@
     border: none;
     border-radius: 30px;
     box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+}
+
+/* 4- Responsive for computers */
+@media (min-width: 1024px) {
+    .messaging__sidebar {
+        width: 30%;
+        overflow-y: auto;
+        max-height: 75vh;
+        padding-right: 10px;
+        margin-bottom: 0;
+    }
+
+    .messaging__conversation {
+        width: 60%;
+        max-height: 70vh;
+        margin-bottom: 0;
+    }
 }

@@ -2,18 +2,20 @@
     1- Post header and footer
     2- Comments
     3- Reactions
-    4 - Particles
-    5 - Popup
+    4- Particles
+    5- Popup
+    6- Responsive for tablets
+    7- Responsive for computers
 */
 
 .content-area {
     background: #e9e9e9;
-    border-radius: 30px 0 0 30px;
+    border-radius: 20px;
     box-shadow: inset -10px -10px 20px #FAFBFF, inset 10px 10px 20px #A6ABBD;
 }
 
 .feed__section {
-    margin: 50px;
+    margin: 20px;
 }
 
 .post {
@@ -28,7 +30,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 30px;
+    padding: 20px;
+    flex-direction: column;
 }
 
 .post__user-info, .post__comment-user-info {
@@ -46,7 +49,7 @@
 }
 
 .post__content {
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 .post__image {
@@ -61,12 +64,11 @@
 }
 
 .post__comments-section {
-    order: 1;
-    width: calc(100% - 250px);
+    width: 100%;
 }
 
 .post__comment {
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 
 .post__comment:last-child {
@@ -74,7 +76,7 @@
 }
 
 .comment-respond__input {
-    width: 50%;
+    width: 90%;
     padding: 15px 10px;
     border-radius: 10px;
     border: none;
@@ -89,11 +91,11 @@
 
 /* 3 - Reactions */
 .post__reactions {
-    order: 2;
     width: fit-content;
     display: flex;
     text-align: center;
     font-weight: 700;
+    margin: 0 auto;
 }
 
 .post__reaction {
@@ -234,3 +236,54 @@
     cursor: pointer;
     box-shadow: -5px -5px 10px #676565, 5px 5px 10px #020202;
 }
+
+/* 6- Responsive for tablets */
+@media (min-width: 768px) {
+    .feed__section {
+        margin: 40px;
+    }
+
+    .comment-respond__input {
+        width: 90%;
+    }
+
+    .post__reactions {
+        justify-content: flex-start;
+    }
+}
+
+/* 7- Responsive for computers */
+@media (min-width: 1024px) {
+    .content-area {
+        border-radius: 30px 0 0 30px;
+        padding: 30px;
+    }
+
+    .feed__section {
+        margin: 50px;
+    }
+
+    .post {
+        border-radius: 20px;
+        margin-bottom: 50px;
+    }
+
+    .post__footer {
+        flex-direction: row;
+    }
+    
+    .post__reactions {
+        order: 2;
+        width: 170px;
+    }
+
+    .post__comments-section {
+        order: 1;
+        width: calc(100% - 200px);
+    }
+
+    .comment-respond__input {
+        width: 50%;
+    }
+}
+
