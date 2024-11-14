@@ -214,7 +214,7 @@
 }
 
 .popup__image {
-    width: fit-content;
+    width: max-content;
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
