@@ -5,7 +5,7 @@
       "lastName": "Dupont",
       "profilePicture": "alice.jpeg",
       "lastConnexion": "2024-11-10T10:24:00Z",
-      "conversationId": "1"
+      "conversationId": 1
     },
     {
       "id": 2,
@@ -13,7 +13,7 @@
       "lastName": "Pierre",
       "profilePicture": "jean.jpeg",
       "lastConnexion": "2024-11-10T10:24:00Z",
-      "conversationId": "4"
+      "conversationId": 4
     },
     {
       "id": 3,
@@ -21,7 +21,7 @@
       "lastName": "Claire",
       "profilePicture": "marie.jpeg",
       "lastConnexion": "2024-11-10T10:24:00Z",
-      "conversationId": "3"
+      "conversationId": 3
     },
     {
       "id": 4,
@@ -29,7 +29,7 @@
       "lastName": "Martin",
       "profilePicture": "bernard.jpeg",
       "lastConnexion": "2024-11-10T10:24:00Z",
-      "conversationId": "2"
+      "conversationId": 2
     }
   ]
   
