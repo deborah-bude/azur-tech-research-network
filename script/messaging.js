@@ -1,11 +1,14 @@
 import { formatDate } from "./utils.js";
-import { getMessagesData, getUsersData, sendMessagesData } from "./dataLoader.js";
+import { getMessagesData, getUsersData, postMessagesData } from "./dataLoader.js";
 
 const messageSidebarSection = document.getElementById("messageSidebar");
 const conversationHeader = document.querySelector("#conversation .conversation__profile");
 const conversationSection = document.querySelector("#conversation .conversation__messages");
 const formMessage = document.querySelector(".form-message")
 
+/**
+ * Manages the conversation data and UI interactions.
+ */
 class ConversationManager {
   constructor() {
     this.messagesData = [];
@@ -15,16 +18,30 @@ class ConversationManager {
     this.friendUser;
   }
 
+  /**
+   * Loads data for messages and users from the server.
+   * @async
+   */
   async loadData() {
     this.messagesData = await getMessagesData();
     this.usersData = await getUsersData();
   }
 
+  /**
+   * Generates the sidebar with a list of all conversations.
+   */
   generateSidebar() {
     this.messagesData.forEach((message) => this.sidebarTemplate(message));
     messageSidebarSection.innerHTML = this.allConversations.join("");
   }
 
+  /**
+   * Generates the HTML template for each conversation in the sidebar and adds it to the conversations array.
+   * @param {Object} message - The message data object containing conversation details.
+   * @param {number} message.senderId - ID of the message
+   * @param {string} message.content - Content of the comment
+   * @param {string} message.timestamp - Date of the message
+   */
   sidebarTemplate(message) {
     const { friendId, messages } = message;
     const friend = this.usersData.find((user) => user.id === friendId);
@@ -46,6 +63,11 @@ class ConversationManager {
     this.allConversations.push(newConversation);
   }
 
+  /**
+   * Generates the conversation content for a given conversation ID.
+   * @async
+   * @param {number} conversationId - ID of the conversation to display.
+   */
   async generateConversation(conversationId) {
     let conversations = this.messagesData.find((message) => message.conversationId === parseInt(conversationId));
 
@@ -66,6 +88,13 @@ class ConversationManager {
     conversationSection.innerHTML = this.messagesConversation.join("");
   }
 
+  /**
+   * Generates the HTML template for each message and adds it to the messagesConversation array.
+   * @param {Object} message - The message object containing message details.
+   * @param {number} message.senderId - ID of the message
+   * @param {string} message.content - Content of the comment
+   * @param {string} message.timestamp - Date of the message
+   */
   messageTemplate(message) {
     const newMessages = 
     `<div class="message ${message.senderId === 0 ? "message--sent" : "message--received"}">
@@ -80,12 +109,27 @@ class ConversationManager {
     this.messagesConversation.push(newMessages);
   }
 
+  /**
+   * Sends a new message to the server and updates the conversation view.
+   * @async
+   * @param {number} conversationId - ID of the conversation where the message will be sent.
+   * @param {string} content - Content of the message to send.
+   */
   async sendMessagesData(conversationId, content) {
-    console.log(content)
-    const timestamp = new Date();
-    const newMessage = await sendMessagesData(conversationId, this.friendUser.id, content, timestamp);
-    // this.messageTemplate(newMessage);
-    // this.conversationSection.innerHTML = this.messagesConversation.join("");
+    try {
+      const timestamp = new Date();
+      const newConversation = await postMessagesData(conversationId, this.friendUser.id, content, timestamp);
+      
+      // Update the UI with the new conversation
+      this.messagesConversation = []; // Reset the message array
+      newConversation.messages.forEach(message => this.messageTemplate(message));
+      conversationSection.innerHTML = this.messagesConversation.join("");
+      
+      // Clear the message input field
+      document.getElementById("messageContent").value = "";
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du message:", error);
+    }
   }
 }
 

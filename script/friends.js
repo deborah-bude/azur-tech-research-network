@@ -83,7 +83,13 @@ function sortFriendsBy(property = "none") {
 
 /**
  * Generates HTML template to display sorted friends list
- * @param {Array} sortedFriends - Sorted list of friends
+ * @param {Array.<Object>} sortedFriends - Sorted list of friends
+ * @param {number} sortedFriends[].id - ID's user
+ * @param {string} sortedFriends[].firstName - FirstName's user
+ * @param {string} sortedFriends[].lastName - LastName's user
+ * @param {string} sortedFriends[].profilePicture - Profile picture's user
+ * @param {string} sortedFriends[].lastConnexion - Date of the connexion
+ * @param {number} sortedFriends[].conversationId - ID's conversation with this user
  * @returns {string} - HTML friends list
  */
 function friendListTemplate(sortedFriends) {
