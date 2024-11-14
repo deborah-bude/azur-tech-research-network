@@ -8,15 +8,17 @@
     <link rel="stylesheet" href="styles/messaging.css">
 </head>
 <body>
-    <section class="layout-container">
+    <main class="layout-container">
         <header class="sidebar">
             <a class="sidebar__logo" href="index.html">
                 <img src="./assets/logo.svg" alt="Logo Moments Partagés">
             </a>
             <nav class="sidebar__nav">
-                <li class="sidebar__item"><a href="index.html" class="sidebar__link"><img class="sidebar__icon" src="./assets/icons/home.svg" alt="Icône accueil">Accueil</a></li>
-                <li class="sidebar__item"><a href="messaging.html" class="sidebar__link sidebar__link--active"><img class="sidebar__icon" src="./assets/icons/messages.svg" alt="Icône messages"> Messagerie</a></li>
-                <li class="sidebar__item"><a href="friends.html" class="sidebar__link"><img class="sidebar__icon" src="./assets/icons/friends.svg" alt="Icône amis"> Mes amis</a></li>
+                <ul class="sidebar__items">
+                    <li class="sidebar__item"><a href="index.html" class="sidebar__link"><img class="sidebar__icon" src="./assets/icons/home.svg" alt="Icône accueil">Accueil</a></li>
+                    <li class="sidebar__item"><a href="messaging.html" class="sidebar__link sidebar__link--active"><img class="sidebar__icon" src="./assets/icons/messages.svg" alt="Icône messages"> Messagerie</a></li>
+                    <li class="sidebar__item"><a href="friends.html" class="sidebar__link"><img class="sidebar__icon" src="./assets/icons/friends.svg" alt="Icône amis"> Mes amis</a></li>
+                </ul>
             </nav>
             <div class="sidebar__toggle">
                 <span class="sidebar__icon"><img src="assets/icons/night.svg" alt="Mode nuit"></span>
@@ -28,7 +30,7 @@
             </div>
         </header>
 
-        <main class="content-area" id="messages">
+        <section class="content-area" id="messages">
             <section class="messaging__sidebar">
                 <h1>Conversations</h1>
                 <div class="search-bar">
@@ -51,8 +53,8 @@
                     <button class="form-message__send"><img src="assets/icons/send.svg" alt="Envoyer"></button>
                 </form>
             </section>
-        </main>
-    </section>
+        </section>
+    </main>
 
     <footer class="footer">
         <p class="footer__text">© 2024 Moments Partagés - Tous droits réservés</p>
