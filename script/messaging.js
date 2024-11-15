@@ -1,5 +1,5 @@
 import { formatDate } from "./utils.js";
-import { getMessagesData, getUsersData, postMessagesData } from "./dataLoader.js";
+import { getMessagesData, getUsersData, postMessagesData } from "./dataAPI.js";
 
 const messageSidebarSection = document.getElementById("messageSidebar");
 const conversationHeader = document.querySelector("#conversation .conversation__profile");
@@ -10,12 +10,13 @@ const formMessage = document.querySelector(".form-message")
  * Manages the conversation data and UI interactions.
  */
 class ConversationManager {
-  constructor() {
+  constructor(conversationId) {
     this.messagesData = [];
     this.usersData = [];
     this.allConversations = [];
     this.messagesConversation = [];
     this.friendUser;
+    this.conversationId = conversationId
   }
 
   /**
@@ -49,7 +50,7 @@ class ConversationManager {
     const dateLastMessage = formatDate(lastMessage.timestamp);
 
     const newConversation = 
-    `<li ${message.conversationId === parseInt(conversationId) ? `class="contact active"` : "class='contact'"}>
+    `<li ${message.conversationId === parseInt(this.conversationId) ? `class="contact active"` : "class='contact'"}>
       <a href="messaging.html?id=${message.conversationId}">
         <div class="contact__info">
           <img src="assets/images/profiles/${friend.profilePicture}" alt="Profil de ${friend.firstName} ${friend.lastName}" class="contact__profile-pic">
@@ -65,15 +66,13 @@ class ConversationManager {
 
   /**
    * Generates the conversation content for a given conversation ID.
-   * @async
-   * @param {number} conversationId - ID of the conversation to display.
    */
-  async generateConversation(conversationId) {
+  async generateConversation() {
     let conversations = this.messagesData.find((message) => message.conversationId === parseInt(conversationId));
 
     if (conversations === undefined) {
       conversations = this.messagesData[0];
-      conversationId = this.messagesData[0].conversationId;
+      this.conversationId = this.messagesData[0].conversationId;
     }
     
     this.friendUser = this.usersData.find((user) => user.id === conversations.friendId);
@@ -86,6 +85,7 @@ class ConversationManager {
 
     conversations.messages.forEach((message) => this.messageTemplate(message));
     conversationSection.innerHTML = this.messagesConversation.join("");
+    conversationSection.scrollTo(0, conversationSection.scrollHeight);
   }
 
   /**
@@ -112,20 +112,20 @@ class ConversationManager {
   /**
    * Sends a new message to the server and updates the conversation view.
    * @async
-   * @param {number} conversationId - ID of the conversation where the message will be sent.
    * @param {string} content - Content of the message to send.
    */
-  async sendMessagesData(conversationId, content) {
+  async sendMessagesData(content) {
     try {
-      const timestamp = new Date();
-      const newConversation = await postMessagesData(conversationId, this.friendUser.id, content, timestamp);
-      
-      // Update the UI with the new conversation
-      this.messagesConversation = []; // Reset the message array
-      newConversation.messages.forEach(message => this.messageTemplate(message));
+      const timestamp = new Date().toISOString();
+      const newConversation = await postMessagesData(
+        parseInt(this.conversationId), 
+        this.friendUser.id, 
+        content, 
+        timestamp
+      );
+      this.messagesConversation = []; 
+      newConversation.messages.forEach((message) => this.messageTemplate(message));
       conversationSection.innerHTML = this.messagesConversation.join("");
-      
-      // Clear the message input field
       document.getElementById("messageContent").value = "";
     } catch (error) {
       console.error("Erreur lors de l'envoi du message:", error);
@@ -137,11 +137,11 @@ class ConversationManager {
 const searchParams = new URLSearchParams(window.location.search);
 let conversationId = searchParams.get("id");
 
-const conversationManager = new ConversationManager();
+const conversationManager = new ConversationManager(conversationId);
 await conversationManager.loadData();
 conversationManager.generateSidebar();
 
-await conversationManager.generateConversation(conversationId);
+await conversationManager.generateConversation()
 
 // Send a new message
 formMessage.addEventListener("submit", (event) => {
@@ -152,5 +152,5 @@ formMessage.addEventListener("submit", (event) => {
     return;
   }
 
-  conversationManager.sendMessagesData(conversationId, messageContent.value);
+  conversationManager.sendMessagesData(messageContent.value);
 })
