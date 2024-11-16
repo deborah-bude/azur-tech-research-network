@@ -10,13 +10,13 @@ const formMessage = document.querySelector(".form-message")
  * Manages the conversation data and UI interactions.
  */
 class ConversationManager {
-  constructor(conversationId) {
+  constructor(id) {
     this.messagesData = [];
     this.usersData = [];
     this.allConversations = [];
     this.messagesConversation = [];
     this.friendUser;
-    this.conversationId = conversationId
+    this.conversationId = id
   }
 
   /**
@@ -72,7 +72,7 @@ class ConversationManager {
 
     if (conversations === undefined) {
       conversations = this.messagesData[0];
-      this.conversationId = this.messagesData[0].conversationId;
+      this.conversationId = this.messagesData[0].id;
     }
     
     this.friendUser = this.usersData.find((user) => user.id === conversations.friendId);
@@ -127,6 +127,7 @@ class ConversationManager {
       newConversation.messages.forEach((message) => this.messageTemplate(message));
       conversationSection.innerHTML = this.messagesConversation.join("");
       document.getElementById("messageContent").value = "";
+      conversationSection.scrollTo(0, conversationSection.scrollHeight);
     } catch (error) {
       console.error("Erreur lors de l'envoi du message:", error);
     }

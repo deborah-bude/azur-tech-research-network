@@ -185,6 +185,7 @@
     border: none;
     border-radius: 30px;
     box-shadow: -10px -10px 20px #FAFBFF, 10px 10px 20px #A6ABBD;
+    cursor: pointer;
 }
 
 /* 4- Responsive for computers */

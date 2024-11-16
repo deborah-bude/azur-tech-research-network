@@ -1,10 +1,11 @@
-import { getUsersData } from "./dataLoader.js";
+import { getUsersData } from "./dataAPI.js";
 import { formatDate } from "./utils.js";
 
 const friendList = document.querySelector(".friends__list");
 const sortFilterOption = document.getElementById('sort-options');
 
-const allFriends = await getUsersData();
+const usersData = await getUsersData();
+const allFriends = usersData.slice(1);
 
 /**
  * Initialize drag-and-drop functionality for friend cards
