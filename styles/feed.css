@@ -89,6 +89,14 @@
     position: relative;
 }
 
+.depth-1 {
+    margin-left: 20px;
+}
+
+.depth-2 {
+    margin-left: 40px;
+}
+
 /* 3 - Reactions */
 .post__reactions {
     width: fit-content;
@@ -243,8 +251,20 @@
         margin: 40px;
     }
 
+    .comment-respond {
+        display: flex;
+        /* width: 100%; */
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .comment-respond__input-box {
+        width: 80%
+    }
+
     .comment-respond__input {
-        width: 90%;
+        width: 100%;
+        margin-bottom: 0;
     }
 
     .post__reactions {
@@ -283,7 +303,7 @@
     }
 
     .comment-respond__input {
-        width: 50%;
+        width: 90%;
     }
 }
 

@@ -43,8 +43,9 @@ export async function getMessagesData() {
     }
 }
 
-export async function postMessagesData(conversationId, friendId, content, timestamp) {
-  const url = "/data/messages.json";
+export async function postMessagesData(id, friendId, content, timestamp) {
+  console.log(id, friendId, content, timestamp)
+  const url = "../data/messages.json";
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -52,11 +53,38 @@ export async function postMessagesData(conversationId, friendId, content, timest
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        conversationId: conversationId,
+        id: id,
         friendId: friendId,
         senderId: 0,
         content: content,
-        timestamp: new Date().toISOString()
+        timestamp: timestamp
+      })
+    })
+
+    if (!response.ok) {
+        throw new Error("Erreur lors de l'enregistrement du message");
+    }
+    return response.json();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function postCommentPostData(postId, content, timestamp, parentId = null, depth) {
+  const url = "../data/posts.json";
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: postId,
+        authorId: 0,
+        content: content,
+        timestamp: timestamp,
+        parentId: parentId,
+        depth: depth,
       })
     })
 
