@@ -50,7 +50,6 @@ const server = createServer((req, res) => {
                 timestamp: newMessage.timestamp
               });
             } else {
-              console.log("conversation existe pas")
               // Creation of new conversation
               conversation = {
                 conversationId: newMessage[newMessage.length - 1]?.id || 0,
