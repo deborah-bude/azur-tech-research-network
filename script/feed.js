@@ -14,6 +14,7 @@ class FeedManager {
         this.postsData = [];
         this.usersData = [];
         this.allPosts = [];
+        this.userReactions = new Map();
     }
 
     /**
@@ -27,6 +28,7 @@ class FeedManager {
         feedSection.innerHTML = this.allPosts.join("");
         this.initParticleAnimations();
         this.initPopupImageView();
+        this.initReactions();
     }
 
     /**
@@ -47,7 +49,7 @@ class FeedManager {
      * @typedef {Object} Post
      * @property {number} id - ID of the post.
      * @property {number} authorId - ID of the author of the post.
-     * @property {string} [content] - Content of the post (optional).
+     * @property {string} content - Content of the post (optional).
      * @property {string} [image] - Image URL of the post (optional).
      * @property {Reaction} reactions - Reactions data of the post.
      * @property {Comment[]} comments - Array of comments on the post.
@@ -64,7 +66,7 @@ class FeedManager {
         const {id, authorId, content, image, reactions, comments, timestamp} = post;
         const author = this.usersData.find((user) => user.id === authorId);
         const datePost = formatDate(timestamp);
-    
+        const userReaction = this.userReactions.get(id) || { liked: false, disliked: false };
 
         /**
          * @typedef {Object} Comment
@@ -120,7 +122,7 @@ class FeedManager {
         const allCommentsHTML = generateCommentsHTML(comments);
     
         const newPost = 
-        `<article class="post">
+        `<article class="post" data-post-id="${id}">
             <div class="post__header">
                 <a class="post__user-info" href="#">
                     <img src="assets/images/profiles/${author.profilePicture}" alt="Profil de ${author.firstname} ${author.lastname}" class="post__profile-pic">
@@ -128,7 +130,7 @@ class FeedManager {
                 </a>
                 <p class="post__date">Publié le ${datePost}</p>
             </div>
-            ${content ? `<p class="post__content">${content}</p>` : ""}
+            <p class="post__content">${content}</p>
             ${image ? `<img src="assets/images/posts/${image}" alt="Image de ${image} posté par ${author.firstName} ${author.lastName}" class="post__image">` : ""}
             <section class="post__footer">
                 <div class="post__reactions">
@@ -137,18 +139,18 @@ class FeedManager {
                         <span class="particles"></span>
                     </button>
                     <div>
-                        <button class="post__reaction">
+                        <button class="post__reaction ${userReaction.liked ? 'active' : ''}" data-reaction="like">
                             <img class="post__icon post__icon--like" src="./assets/icons/like.svg" alt="Like">
                             <span class="particles"></span>
                         </button>
-                        <p>${reactions.like}</p>
+                        <p class="like-count">${reactions.like}</p>
                     </div>
                     <div>
-                        <button class="post__reaction">
+                        <button class="post__reaction ${userReaction.disliked ? 'active' : ''}" data-reaction="dislike">
                             <img class="post__icon post__icon--dislike" src="./assets/icons/dislike.svg" alt="Dislike">
                             <span class="particles"></span>
                         </button>
-                        <p>${reactions.dislike}</p>
+                        <p class="dislike-count">${reactions.dislike}</p>
                     </div>
                 </div>
                 <div class="post__comments-section">
@@ -168,6 +170,77 @@ class FeedManager {
         </article>`;
     
         this.allPosts.push(newPost);
+    }
+
+    /**
+     * Initialize reactions for posts
+     */
+    initReactions() {
+        document.querySelectorAll(".post__reaction[data-reaction]").forEach(button => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                this.handleReaction(event);
+            });
+        });
+    }
+
+    /**
+     * Handle reaction click (like/dislike)
+     * @param {Event} event - Click event
+     */
+    async handleReaction(event) {
+        const button = event.currentTarget;
+        const reactionType = button.dataset.reaction;
+        const post = button.closest('.post');
+        const postId = parseInt(post.dataset.postId);
+        
+        // Récupérer l'état actuel des réactions pour ce post
+        let userReaction = this.userReactions.get(postId) || { liked: false, disliked: false };
+        const countElement = button.parentElement.querySelector(`.${reactionType}-count`);
+        let count = parseInt(countElement.textContent);
+
+        if (reactionType === 'like' && userReaction.liked) {
+            // Enlever le like
+            userReaction.liked = false;
+            count--;
+            button.classList.remove('active');
+        } else if(reactionType === 'like' && !userReaction.liked) {
+            // Ajouter le like et enlever le dislike s'il existe
+            if (userReaction.disliked) {
+                userReaction.disliked = false;
+                const dislikeButton = post.querySelector('.post__reaction[data-reaction="dislike"]');
+                const dislikeCount = post.querySelector('.dislike-count');
+                dislikeButton.classList.remove('active');
+                dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+            }
+            userReaction.liked = true;
+            count++;
+            button.classList.add('active');
+        } else if(reactionType === 'dislike' && userReaction.disliked) {
+            // Enlever le dislike
+            userReaction.disliked = false;
+            count--;
+            button.classList.remove('active');
+        } else if(reactionType === 'dislike' && !userReaction.disliked) {
+            // Ajouter le dislike et enlever le like s'il existe
+            if (userReaction.liked) {
+                userReaction.liked = false;
+                const likeButton = post.querySelector('.post__reaction[data-reaction="like"]');
+                const likeCount = post.querySelector('.like-count');
+                likeButton.classList.remove('active');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            }
+            userReaction.disliked = true;
+            count++;
+            button.classList.add('active');
+        }
+
+        // Mettre à jour l'état et l'affichage
+        this.userReactions.set(postId, userReaction);
+        countElement.textContent = count;
+
+        // // Animation de particules
+        this.particleAnimation(event);
     }
 
     /**
